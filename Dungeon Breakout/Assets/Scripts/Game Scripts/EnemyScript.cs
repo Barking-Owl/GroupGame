@@ -36,7 +36,7 @@ public class EnemyScript : MonoBehaviour
 
     public void ScoreTally()
     {
-        GameManager.score = GameManager.score + maxHP*3;
+        GameManager.score = GameManager.score + (int)maxHP*3;
     }
 
     // Update is called once per frame

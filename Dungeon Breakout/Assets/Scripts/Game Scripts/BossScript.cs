@@ -3,7 +3,7 @@
  * Date Created: 4 April, 2022
  * 
  * Last Edited by: Andrew Nguyen
- * Last Edited: 4 April, 2022
+ * Last Edited: 13 April, 2022
  * 
  * Description: General management for boss. May merge with EnemyScript
  * 
@@ -39,7 +39,7 @@ public class BossScript : MonoBehaviour
 
     public void ScoreTally()
     {
-        GameManager.score = GameManager.score + maxHP * 3;
+        //GameManager.score = GameManager.score + maxHP * 3;
     } //end ScoreTally()
 
     // Update is called once per frame
