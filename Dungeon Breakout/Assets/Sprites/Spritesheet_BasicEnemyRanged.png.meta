@@ -1,0 +1,348 @@
+fileFormatVersion: 2
+guid: 4d99ca2ccf127374da8ebfaaa08799a8
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -431670371380729846
+    second: Spritesheet_BasicEnemyRanged_Walk1
+  - first:
+      213: 4079010674856069127
+    second: Spritesheet_BasicEnemyRanged_Walk2
+  - first:
+      213: -9078177778846477558
+    second: Spritesheet_BasicEnemyRanged_Walk3
+  - first:
+      213: -1726344873846948772
+    second: Spritesheet_BasicEnemyRanged_Walk4
+  - first:
+      213: 8762834502513044534
+    second: Spritesheet_BasicEnemyRanged_Battle
+  - first:
+      213: 331829603150224239
+    second: Spritesheet_BasicEnemyRanged_WalkBack1
+  - first:
+      213: -6002339815995488594
+    second: Spritesheet_BasicEnemyRanged_WalkBack2
+  - first:
+      213: -4851644938456490904
+    second: Spritesheet_BasicEnemyRanged_WalkBack3
+  - first:
+      213: 8991195128453973266
+    second: Spritesheet_BasicEnemyRanged_WalkBack4
+  - first:
+      213: 425270720550505987
+    second: Spritesheet_BasicEnemyRanged_Idle
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Spritesheet_BasicEnemyRanged_Walk1
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 98
+        width: 11
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a086ac59516620af0800000000000000
+      internalID: -431670371380729846
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spritesheet_BasicEnemyRanged_Walk2
+      rect:
+        serializedVersion: 2
+        x: 110
+        y: 98
+        width: 11
+        height: 17
+      alignment: 9
+      pivot: {x: 0.5000007, y: 0.47206566}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 70882d5e89e8b9830800000000000000
+      internalID: 4079010674856069127
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spritesheet_BasicEnemyRanged_Walk3
+      rect:
+        serializedVersion: 2
+        x: 122
+        y: 98
+        width: 11
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a03d20c8865d30280800000000000000
+      internalID: -9078177778846477558
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spritesheet_BasicEnemyRanged_Walk4
+      rect:
+        serializedVersion: 2
+        x: 134
+        y: 98
+        width: 11
+        height: 17
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4814498}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c5c398adb7aca08e0800000000000000
+      internalID: -1726344873846948772
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spritesheet_BasicEnemyRanged_Battle
+      rect:
+        serializedVersion: 2
+        x: 43
+        y: 80
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 63ca3d37d87db9970800000000000000
+      internalID: 8762834502513044534
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spritesheet_BasicEnemyRanged_WalkBack1
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 79
+        width: 11
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f6b5ab51445ea9400800000000000000
+      internalID: 331829603150224239
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spritesheet_BasicEnemyRanged_WalkBack2
+      rect:
+        serializedVersion: 2
+        x: 110
+        y: 79
+        width: 11
+        height: 17
+      alignment: 9
+      pivot: {x: 0.5039541, y: 0.47697043}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ea6c7663db763bca0800000000000000
+      internalID: -6002339815995488594
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spritesheet_BasicEnemyRanged_WalkBack3
+      rect:
+        serializedVersion: 2
+        x: 122
+        y: 79
+        width: 11
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 86c9af232ae7bacb0800000000000000
+      internalID: -4851644938456490904
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spritesheet_BasicEnemyRanged_WalkBack4
+      rect:
+        serializedVersion: 2
+        x: 134
+        y: 79
+        width: 11
+        height: 17
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4717654}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 215c8b9f45427cc70800000000000000
+      internalID: 8991195128453973266
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spritesheet_BasicEnemyRanged_Idle
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 96
+        width: 12
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 30e89c7977dd6e500800000000000000
+      internalID: 425270720550505987
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: ab5a85e7a58f9f744b65b05dea1e6727
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
