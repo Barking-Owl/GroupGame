@@ -399,13 +399,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d49296548f6742498c9896ffedace25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameState: 0
   gameTitle: Untitled Game
   gameCredits: Made by Me
   copyrightDate: Copyright 2022
   recordHighScore: 1
   defaultHighScore: 1000
   numberOfLives: 0
-  levelLost: 0
+  resetLostLevel: 0
   defaultEndMessage: Game Over
   looseMessage: You Loose
   winMessage: You Win
@@ -416,8 +417,9 @@ MonoBehaviour:
   - level_00
   - level_01
   gameLevelsCount: 0
+  TestGameManager: 0
+  levelLost: 0
   nextLevel: 0
-  gameState: 0
   playerWon: 0
 --- !u!4 &890755324
 Transform:
@@ -625,6 +627,56 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   point: 100
+--- !u!1 &1178006014
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1178006016}
+  - component: {fileID: 1178006015}
+  m_Layer: 0
+  m_Name: BattleManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1178006015
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1178006014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c335a51dba6da25439b0d9bc1031da07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  State: 0
+  playerTurn: 0
+  isBattling: 0
+  playerRef: {fileID: 0}
+  enemyRef: {fileID: 0}
+  playerPos: {fileID: 0}
+  enemyPos: {fileID: 0}
+--- !u!4 &1178006016
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1178006014}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1453655709
 GameObject:
   m_ObjectHideFlags: 0
@@ -733,13 +785,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1718228168}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0cb4dbcdd49ab4648bd320435b5e331f, type: 3}
+  m_Script: {fileID: 11500000, guid: ab9f029f8934410498aac50b7660be5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelTextbox: {fileID: 144295888}
-  livesTextbox: {fileID: 1789208175}
-  scoreTextbox: {fileID: 1453655710}
-  highScoreTextbox: {fileID: 2086147213}
+  levelTextbox: {fileID: 0}
+  livesTextbox: {fileID: 0}
+  scoreTextbox: {fileID: 0}
+  highScoreTextbox: {fileID: 0}
 --- !u!114 &1718228170
 MonoBehaviour:
   m_ObjectHideFlags: 0
