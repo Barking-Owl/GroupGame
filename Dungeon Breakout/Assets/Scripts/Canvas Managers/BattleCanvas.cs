@@ -1,11 +1,11 @@
 /**** 
- * Created by: Akram Taghavi-Burris
- * Date Created: Feb 23, 2022
+ * Created by: Andrew Nguyen
+ * Date Created: April 18, 2022
  * 
  * Last Edited by: Andrew Nguyen
  * Last Edited: April 18, 2022
  * 
- * Description: Updates HUD Canvas referencing game manager. Level_01 is the battle screen. This script manages Overworld.
+ * Description: Updates HUD Canvas referencing game manager. Manages battles
 ****/
 
 using System.Collections;
@@ -13,13 +13,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HUDCanvas : MonoBehaviour
+public class BattleCanvas : MonoBehaviour
 {
     /*** VARIABLES ***/
 
     GameManager gm; //reference to game manager
 
     [Header("Canvas SETTINGS")]
+    static public GameObject bmParent; //Reference to the battle manager object
+    BattleManager bm = bmParent.GetComponent<BattleManager>();
     public Text levelTextbox; //textbox for level count
     public Text livesTextbox; //textbox for the lives
     public Text scoreTextbox; //textbox for the score
@@ -35,7 +37,6 @@ public class HUDCanvas : MonoBehaviour
     private void Start()
     {
         gm = GameManager.GM; //find the game manager
-
         //reference to levle info
         level = gm.gameLevelsCount;
         totalLevels = gm.gameLevels.Length;
@@ -50,6 +51,7 @@ public class HUDCanvas : MonoBehaviour
     {
         GetGameStats();
         SetHUD();
+
     }//end Update()
 
     void GetGameStats()
