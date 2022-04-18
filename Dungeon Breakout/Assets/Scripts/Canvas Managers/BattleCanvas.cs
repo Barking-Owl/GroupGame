@@ -1,11 +1,11 @@
 /**** 
- * Created by: Akram Taghavi-Burris
- * Date Created: Feb 23, 2022
+ * Created by: Andrew Nguyen
+ * Date Created: April 18, 2022
  * 
  * Last Edited by: Andrew Nguyen
  * Last Edited: April 18, 2022
  * 
- * Description: Updates HUD Canvas referencing game manager. Level_01 is the battle screen. This script manages Overworld.
+ * Description: Updates HUD Canvas referencing game manager. Manages battles
 ****/
 
 using System.Collections;
@@ -13,7 +13,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HUDCanvas : MonoBehaviour
+public class BattleCanvas : MonoBehaviour
 {
     /*** VARIABLES ***/
 
@@ -50,6 +50,11 @@ public class HUDCanvas : MonoBehaviour
     {
         GetGameStats();
         SetHUD();
+
+        if (BattleManager.State == enemyTurn)
+        {
+
+        }
     }//end Update()
 
     void GetGameStats()

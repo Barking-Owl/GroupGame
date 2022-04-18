@@ -90,6 +90,8 @@ public class BattleManager : MonoBehaviour
 
         //Then at the end...
         enemyStats.hitpoints -= CAStats.attack;
+
+        State = battleState.EnemyTurn;
     } //end playerAttack()
 
     // Update is called once per frame
