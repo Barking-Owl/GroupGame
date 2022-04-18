@@ -20,6 +20,8 @@ public class BattleCanvas : MonoBehaviour
     GameManager gm; //reference to game manager
 
     [Header("Canvas SETTINGS")]
+    static public GameObject bmParent; //Reference to the battle manager object
+    BattleManager bm = bmParent.GetComponent<BattleManager>();
     public Text levelTextbox; //textbox for level count
     public Text livesTextbox; //textbox for the lives
     public Text scoreTextbox; //textbox for the score
@@ -35,7 +37,6 @@ public class BattleCanvas : MonoBehaviour
     private void Start()
     {
         gm = GameManager.GM; //find the game manager
-
         //reference to levle info
         level = gm.gameLevelsCount;
         totalLevels = gm.gameLevels.Length;
@@ -51,10 +52,6 @@ public class BattleCanvas : MonoBehaviour
         GetGameStats();
         SetHUD();
 
-        if (BattleManager.State == enemyTurn)
-        {
-
-        }
     }//end Update()
 
     void GetGameStats()
