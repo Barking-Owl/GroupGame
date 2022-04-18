@@ -47,6 +47,7 @@ public class CharlieArcher : MonoBehaviour
     public float hitpoints;
 
     private Animator animController;
+    private SpriteRenderer spriteRender;
 
     void Awake()
     {
@@ -56,6 +57,7 @@ public class CharlieArcher : MonoBehaviour
         hitpoints = 100f;
 
         animController = GetComponent<Animator>();
+        spriteRender = GetComponent<SpriteRenderer>();
     } //end Awake()
 
     // Start is called before the first frame update
@@ -79,6 +81,9 @@ public class CharlieArcher : MonoBehaviour
         //send stuff to blend tree for animation
         animController.SetFloat("xAxis", x);
         animController.SetFloat("yAxis", y);
+
+        //flip sprite if we are going left
+        spriteRender.flipX = (x < 0);
 
         Vector3 pos = transform.position;
         pos.x += x * speed * Time.deltaTime;
