@@ -2,8 +2,8 @@
  * Created by: Andrew Nguyen
  * Date Created: 4 April, 2022
  * 
- * Last Edited by: Andrew Nguyen
- * Last Edited: 4 April, 2022
+ * Last Edited by: Camp Steiner
+ * Last Edited: 16 April, 2022
  * 
  * Description: General management for player
  * 
@@ -46,12 +46,18 @@ public class CharlieArcher : MonoBehaviour
     public float speed;
     public float hitpoints;
 
+    private Animator animController;
+    private SpriteRenderer spriteRender;
+
     void Awake()
     {
         attack = 10f; //The attack value of the punch move.
         defense = 1.00f;
-        speed = 5f;
+        speed = 1f;
         hitpoints = 100f;
+
+        animController = GetComponent<Animator>();
+        spriteRender = GetComponent<SpriteRenderer>();
     } //end Awake()
 
     // Start is called before the first frame update
@@ -67,5 +73,29 @@ public class CharlieArcher : MonoBehaviour
         {
             Destroy(this); //Death animation
         }
+
+        //movement
+        float x = Input.GetAxis("Horizontal");
+        float y = Input.GetAxis("Vertical");
+        
+        //send stuff to blend tree for animation
+        animController.SetFloat("xAxis", x);
+        animController.SetFloat("yAxis", y);
+
+        //flip sprite if we are going left
+        spriteRender.flipX = (x < 0);
+
+        Vector3 pos = transform.position;
+        pos.x += x * speed * Time.deltaTime;
+        pos.y += y * speed * Time.deltaTime;
+        transform.position = pos;
+
+        //skills
+        //maybe want to rework these to use the Unity Input Axes so controllers would work by default?
+        if (Input.GetKeyDown(KeyCode.Space))
+        { //main attack
+            //todo
+        }
+
     } //end Update()
 }
