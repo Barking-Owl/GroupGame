@@ -20,20 +20,25 @@ public class BattleCanvas : MonoBehaviour
     GameManager gm; //reference to game manager
 
     [Header("Canvas SETTINGS")]
-    static public GameObject bmParent; //Reference to the battle manager object
-    BattleManager bm = bmParent.GetComponent<BattleManager>();
+    BattleManager bm;
     public Text levelTextbox; //textbox for level count
-    public Text livesTextbox; //textbox for the lives
+    public Text playerHealthTextbox; //textbox for the lives
+    public Text enemyHealthTextbox; //textbox for the enemy
     public Text scoreTextbox; //textbox for the score
     public Text highScoreTextbox; //textbox for highscore
     
-    //GM Data
+    //GM Data, or BM. Health is displayed center screen.
     private int level;
     private int totalLevels;
-    private int lives;
+    private int playerHealth;
+    private int enemyHealth;
     private int score;
     private int highscore;
 
+    private void Awake()
+    {
+        bm = GetComponent<BattleManager>();
+    }
     private void Start()
     {
         gm = GameManager.GM; //find the game manager
@@ -56,7 +61,8 @@ public class BattleCanvas : MonoBehaviour
 
     void GetGameStats()
     {
-        lives = gm.Lives;
+        playerHealth = (int)bm.CAStats.hitpoints;
+        enemyHealth = (int)bm.enemyStats.hitpoints;
         score = gm.Score;
         highscore = gm.HighScore;
     }
@@ -65,7 +71,7 @@ public class BattleCanvas : MonoBehaviour
     {
         //if texbox exsists update value
         if (levelTextbox) { levelTextbox.text = "Level " + level + "/" + totalLevels; }
-        if (livesTextbox) { livesTextbox.text = "Lives " + lives; }
+        if (playerHealthTextbox) { playerHealthTextbox.text = "Health " + playerHealth; }
         if (scoreTextbox) { scoreTextbox.text = "Score " + score; }
         if (highScoreTextbox) { highScoreTextbox.text = "High Score " + highscore; }
 

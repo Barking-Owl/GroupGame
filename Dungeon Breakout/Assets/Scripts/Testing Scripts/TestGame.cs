@@ -25,10 +25,10 @@ public class TestGame : MonoBehaviour
         }
 
         //lose live
-        if (Input.GetKeyUp("backspace"))
-        {
-            GameManager.GM.LostLife();
-        }
+        //if (Input.GetKeyUp("backspace"))
+        //{
+        //    GameManager.GM.LostLife();
+        //}
 
     }//end Update()
 }

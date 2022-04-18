@@ -41,8 +41,8 @@ public class BattleManager : MonoBehaviour
     public Transform enemyPos;
 
     //References to Player and Enemy's stats.
-    CharlieArcher CAStats;
-    EnemyScript enemyStats;
+    public CharlieArcher CAStats;
+    public EnemyScript enemyStats;
 
     private void Awake()
     {
