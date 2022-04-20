@@ -2,8 +2,8 @@
  * Created by: Akram Taghavi-Burris
  * Date Created: Feb 23, 2022
  * 
- * Last Edited by: NA
- * Last Edited: Feb 26, 2022
+ * Last Edited by: Andrew Nguyen
+ * Last Edited: April 18, 2022
  * 
  * Description: Basic GameManager Template
 ****/
@@ -48,8 +48,8 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public GameState gameState = GameState.Title; //first game state
 
     [Header("GENERAL SETTINGS")]
-    public string gameTitle = "Untitled Game";  //name of the game
-    public string gameCredits = "Made by Me"; //game creator(s)
+    public string gameTitle = "Dungeon Breakout";  //name of the game
+    public string gameCredits = "Made by Lavender Florence, Campinator, and TCPeoples"; //game creator(s)
     public string copyrightDate = "Copyright " + thisDay; //date cretaed
 
     [Header("GAME SETTINGS")]
@@ -58,19 +58,19 @@ public class GameManager : MonoBehaviour
     public bool recordHighScore = false; //is the High Score recorded
 
     [SerializeField] //Access to private variables in editor
-    private int defaultHighScore = 1000;
-    static public int highScore = 1000; // the default High Score
+    private int defaultHighScore = 0;
+    static public int highScore = 0; // the default High Score
     public int HighScore { get { return highScore; } set { highScore = value; } }//access to private variable highScore [get/set methods]
 
     [Space(10)]
 
     //static vairables can not be updated in the inspector, however private serialized fileds can be
     [SerializeField] //Access to private variables in editor
-    private int numberOfLives; //set number of lives in the inspector
+    //private int numberOfLives; //set number of lives in the inspector
     [Tooltip("Does the level get reset when a life is lost")]
     public bool resetLostLevel; //reset the lost level
-    static public int lives; // number of lives for player 
-    public int Lives { get { return lives; } set { lives = value; } }//access to static variable lives [get/set methods]
+    //static public int lives; // number of lives for player 
+    //public int playerHealth { get { return playerHealth; } set { health = value; } }//access to static variable lives [get/set methods]
 
     static public int score;  //score value
     public int Score { get { return score; } set { score = value; } }//access to static variable score [get/set methods]
@@ -220,7 +220,7 @@ public class GameManager : MonoBehaviour
 
 
         //SET ALL GAME LEVEL VARIABLES FOR START OF GAME
-        lives = numberOfLives; //set the number of lives
+        //lives = numberOfLives; //set the number of lives
         score = 0; //set starting score
 
         //set High Score
@@ -282,7 +282,7 @@ public class GameManager : MonoBehaviour
 
     }//end NextLevel()
 
-
+    /*
     //PLAYER LOST A LIFE
     public void LostLife()
     {
@@ -303,7 +303,7 @@ public class GameManager : MonoBehaviour
 
         } // end elseif
     }//end LostLife()
-
+    */
 
     //CHECK SCORE UPDATES
     public void UpdateScore(int point = 0)
