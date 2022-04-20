@@ -3,7 +3,7 @@
  * Date Created: Feb 23, 2022
  * 
  * Last Edited by: Andrew Nguyen
- * Last Edited: April 18, 2022
+ * Last Edited: April 20, 2022
  * 
  * Description: Basic GameManager Template
 ****/
@@ -96,6 +96,11 @@ public class GameManager : MonoBehaviour
 
     public static string currentSceneName; //the current scene name;
 
+    [Header("BATTLE INTERACTION")]
+    public GameObject playerRef;
+    public GameObject enemyRef;
+    public string lastScene; 
+
     [Header("FOR TESTING")]
     public bool TestGameManager = false; // test game manager functionality
 
@@ -161,6 +166,14 @@ public class GameManager : MonoBehaviour
         this.gameState = state;
     }//end SetGameState()
 
+    public void GoBattle()
+    {
+        //To do in Charlie Archer script:
+        //-OnCollisionEnter
+        //-Set playerRef and enemyRef to what it is here in gm
+        lastScene = SceneManager.GetActiveScene().name; //Get this scene so we return to it later
+        SceneManager.LoadScene("dungeon_battle");
+    } //end GoBattle()
 
     //CHECK FOR GAME STATE CHANGES
     private void CheckGameState()
