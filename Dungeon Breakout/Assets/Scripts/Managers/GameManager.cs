@@ -48,8 +48,8 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public GameState gameState = GameState.Title; //first game state
 
     [Header("GENERAL SETTINGS")]
-    public string gameTitle = "Untitled Game";  //name of the game
-    public string gameCredits = "Made by Me"; //game creator(s)
+    public string gameTitle = "Dungeon Breakout";  //name of the game
+    public string gameCredits = "Made by Lavender Florence, Campinator, and TCPeoples"; //game creator(s)
     public string copyrightDate = "Copyright " + thisDay; //date cretaed
 
     [Header("GAME SETTINGS")]
@@ -58,8 +58,8 @@ public class GameManager : MonoBehaviour
     public bool recordHighScore = false; //is the High Score recorded
 
     [SerializeField] //Access to private variables in editor
-    private int defaultHighScore = 1000;
-    static public int highScore = 1000; // the default High Score
+    private int defaultHighScore = 0;
+    static public int highScore = 0; // the default High Score
     public int HighScore { get { return highScore; } set { highScore = value; } }//access to private variable highScore [get/set methods]
 
     [Space(10)]
