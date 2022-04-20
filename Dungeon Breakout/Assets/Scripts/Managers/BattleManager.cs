@@ -3,7 +3,7 @@
  * Date Created: 11 April, 2022
  * 
  * Last Edited by: Andrew Nguyen
- * Last Edited: 19 April, 2022
+ * Last Edited: 20 April, 2022
  * 
  * Description: Manages battles. Communicates with Inventory, UI, Player, and Enemies.
  * 
@@ -49,6 +49,8 @@ public class BattleManager : MonoBehaviour
     private void Awake()
     {
         gm = GameManager.GM;
+        playerRef = gm.playerRef;
+        enemyRef = gm.enemyRef;
     } //end Awake
 
     private void InitializeUnit(GameObject s, Transform t)
@@ -96,6 +98,43 @@ public class BattleManager : MonoBehaviour
         State = battleState.EnemyTurn;
     } //end playerAttack()
 
+    public void playerGuard()
+    {
+        //Nullify once player's turn is back.
+        //The next attack, if they choose to attack, will do a quarter of the damage.
+        CAStats.defense = 0.50f;
+
+        State = battleState.EnemyTurn;
+    } //end playerGuard()
+
+    public void playerHeal()
+    {
+        //Subtract a healing potion and only do this if there is a healing potion. If there isn't, keep it on palyer's turn. If there is, go to enemy's turn and heal player.
+        CAStats.hitpoints += 34; //Make sure there is a check that if it goes over 100 it goes back to 100.
+        State = battleState.EnemyTurn;
+
+    } //end playerHeal()
+
+    public void enemyAttack()
+    {
+        State = battleState.PlayerTurn;
+    } //end enemyAttack()
+
+    public void enemyChargeAttack()
+    {
+        //The enemy will spend a turn charging an attack. They will always do the strong attack on their next turn, so set a flag for that.
+        State = battleState.PlayerTurn;
+    } //end enemyChargeAttack()
+
+    public void enemyStrongAttack()
+    {
+
+    } //end enemyStrongAttack()
+
+    public void enemyGuard()
+    {
+        State = battleState.PlayerTurn;
+    }
     // Update is called once per frame
     void Update()
     {
@@ -103,14 +142,14 @@ public class BattleManager : MonoBehaviour
 
         if (CAStats.hitpoints <= 0)
         {
-            Debug.Log("Game Over! Or, player lost a life! Repeat the battle or go to game over screen!");
+            Debug.Log("Game Over! Go to game over screen!");
             SceneManager.LoadScene("end_scene");
         }
         if (enemyStats.hitpoints <= 0)
         {
             Debug.Log("We won! Right on! Go back to the dungeon");
             Debug.Log("Drops should be notified on the HUD to the player");
-            SceneManager.LoadScene("level_00"); //Previous level should be logged by GameManager or the Battle Manager right before the player attacks an enemy and enters the battle screen
+            SceneManager.LoadScene(gm.lastScene); //Previous level should be logged by GameManager or the Battle Manager right before the player attacks an enemy and enters the battle screen
 
         }
         
