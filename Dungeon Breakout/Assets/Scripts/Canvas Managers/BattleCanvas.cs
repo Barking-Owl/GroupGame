@@ -3,7 +3,7 @@
  * Date Created: April 18, 2022
  * 
  * Last Edited by: Andrew Nguyen
- * Last Edited: April 18, 2022
+ * Last Edited: April 20, 2022
  * 
  * Description: Updates HUD Canvas referencing game manager. Manages battles
 ****/
@@ -12,6 +12,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class BattleCanvas : MonoBehaviour
 {
@@ -57,6 +58,7 @@ public class BattleCanvas : MonoBehaviour
         GetGameStats();
         SetHUD();
 
+        //if bm.State == (CHECK the Battle manager state. If it's the enemy's, hide the bottom
     }//end Update()
 
     void GetGameStats()
@@ -77,4 +79,25 @@ public class BattleCanvas : MonoBehaviour
 
     }//end SetHUD()
 
+    //Go back to the previous scene
+    public void Flee()
+    {
+        SceneManager.LoadScene(gm.lastScene);
+    } //end Flee()
+
+    //Raise Charlie Archer's defense for one turn
+    public void Guard()
+    {
+        bm.playerGuard();
+    } //end Guard()
+
+    public void Attack()
+    {
+        bm.playerAttack();
+    } //end Attack()
+
+    public void Heal()
+    {
+        bm.playerHeal();
+    } //end Heal()
 }
