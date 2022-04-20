@@ -3,7 +3,7 @@
  * Date Created: 11 April, 2022
  * 
  * Last Edited by: Andrew Nguyen
- * Last Edited: 18 April, 2022
+ * Last Edited: 19 April, 2022
  * 
  * Description: Manages battles. Communicates with Inventory, UI, Player, and Enemies.
  * 
@@ -24,25 +24,27 @@ public class BattleManager : MonoBehaviour
     public battleState State;
 
     //Variables//
-    public bool playerTurn; //How can we discern if it is the player's turn?
-    public bool isBattling;
 
-    //Before battle is instantiated, these things should be done
+    //Before battle is instantiated, these things should be done [IN GAME MANAGER]
     // -Set the reference to playerRef in Game Manager
     // -Set reference to enemyRef in Game Manager
     // -Get the index of the dungeon right before the battle starts in Game Manager. After the battle is won by the player, load that.
     // -The enemy should be destroyed by getting the reference in GameManager.
 
+    [Header("SET DYNAMICALLY")]
     public GameObject playerRef;
     public GameObject enemyRef;
-
-    //These transforms are empty gameobjects. The background will be a part of the canvas, but the two gameobjects won't move.
-    public Transform playerPos;
-    public Transform enemyPos;
-
     //References to Player and Enemy's stats.
     public CharlieArcher CAStats;
     public EnemyScript enemyStats;
+
+    [Header("SET IN INSPECTOR")]
+    //These transforms are empty gameobjects. The background will be a part of the canvas, but the two gameobjects won't move.
+    //Spheres are only there for reference
+    public Transform playerPos;
+    public Transform enemyPos;
+
+    
 
     private void Awake()
     {
