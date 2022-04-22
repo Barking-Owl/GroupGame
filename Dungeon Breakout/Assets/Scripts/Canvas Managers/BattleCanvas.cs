@@ -3,7 +3,7 @@
  * Date Created: April 18, 2022
  * 
  * Last Edited by: Andrew Nguyen
- * Last Edited: April 20, 2022
+ * Last Edited: April 21, 2022
  * 
  * Description: Updates HUD Canvas referencing game manager. Manages battles
 ****/
@@ -19,6 +19,7 @@ public class BattleCanvas : MonoBehaviour
     /*** VARIABLES ***/
 
     GameManager gm; //reference to game manager
+    GameObject[] battleHUDArray;
 
     [Header("Canvas SETTINGS")]
     BattleManager bm;
@@ -27,7 +28,8 @@ public class BattleCanvas : MonoBehaviour
     public Text enemyHealthTextbox; //textbox for the enemy
     public Text scoreTextbox; //textbox for the score
     public Text highScoreTextbox; //textbox for highscore
-    
+    public Text itemsTextbox; //dynamic health for healing potions
+
     //GM Data, or BM. Health is displayed center screen.
     private int level;
     private int totalLevels;
@@ -47,6 +49,7 @@ public class BattleCanvas : MonoBehaviour
         level = gm.gameLevelsCount;
         totalLevels = gm.gameLevels.Length;
 
+        battleHUDArray = GameObject.FindGameObjectsWithTag("Player Battle Options");
 
 
         SetHUD();
@@ -58,8 +61,31 @@ public class BattleCanvas : MonoBehaviour
         GetGameStats();
         SetHUD();
 
-        //if bm.State == (CHECK the Battle manager state. If it's the enemy's, hide the bottom
+        if (bm.State == BattleManager.battleState.EnemyTurn)
+        {
+            DisableBattleHUD();
+        }
+        else
+        {
+            EnableBattleHUD();
+        }
     }//end Update()
+
+    void EnableBattleHUD()
+    {
+        foreach (GameObject go in battleHUDArray)
+        {
+            go.SetActive(true);
+        }
+    } //end EnableBattleHUD()
+
+    void DisableBattleHUD()
+    {
+        foreach (GameObject go in battleHUDArray)
+        {
+            go.SetActive(false);
+        }
+    } //end DisableBattleHUD()
 
     void GetGameStats()
     {
@@ -67,7 +93,7 @@ public class BattleCanvas : MonoBehaviour
         enemyHealth = (int)bm.enemyStats.hitpoints;
         score = gm.Score;
         highscore = gm.HighScore;
-    }
+    } //end GetGameStats()
 
     void SetHUD()
     {
@@ -76,6 +102,9 @@ public class BattleCanvas : MonoBehaviour
         if (playerHealthTextbox) { playerHealthTextbox.text = "Health " + playerHealth; }
         if (scoreTextbox) { scoreTextbox.text = "Score " + score; }
         if (highScoreTextbox) { highScoreTextbox.text = "High Score " + highscore; }
+
+        //New content - mainly heal needs to be taken care of as it will show how many health potions are left
+        if (itemsTextbox) { itemsTextbox.text = "Heal (" + bm.CAStats.potions + ")"; }
 
     }//end SetHUD()
 
