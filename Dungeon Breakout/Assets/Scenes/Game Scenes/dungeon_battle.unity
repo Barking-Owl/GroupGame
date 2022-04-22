@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657868, g: 0.49641263, b: 0.57481706, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -137,7 +137,7 @@ GameObject:
   - component: {fileID: 62699840}
   m_Layer: 5
   m_Name: button_Items
-  m_TagString: Untagged
+  m_TagString: Player Battle Options
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -270,7 +270,7 @@ GameObject:
   - component: {fileID: 95094220}
   m_Layer: 5
   m_Name: button_Attack
-  m_TagString: Untagged
+  m_TagString: Player Battle Options
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -723,7 +723,7 @@ GameObject:
   - component: {fileID: 539465478}
   m_Layer: 5
   m_Name: button_Flee
-  m_TagString: Untagged
+  m_TagString: Player Battle Options
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -887,7 +887,7 @@ GameObject:
   - component: {fileID: 611974088}
   m_Layer: 5
   m_Name: button_Guard
-  m_TagString: Untagged
+  m_TagString: Player Battle Options
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1285,7 +1285,7 @@ GameObject:
   - component: {fileID: 892477185}
   m_Layer: 5
   m_Name: pnl_HUDOptions
-  m_TagString: Untagged
+  m_TagString: Player Battle Options
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1735,6 +1735,7 @@ MonoBehaviour:
   enemyHealthTextbox: {fileID: 1746687849}
   scoreTextbox: {fileID: 1453655710}
   highScoreTextbox: {fileID: 2086147213}
+  itemsTextbox: {fileID: 113743133}
 --- !u!114 &1718228170
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1846,6 +1847,8 @@ MonoBehaviour:
   enemyStats: {fileID: 0}
   playerPos: {fileID: 571963572}
   enemyPos: {fileID: 742875883}
+  explosionGood: {fileID: 2814556892148721703, guid: d0b1fd47b5e54514a90627dec2c77abe, type: 3}
+  explosionBad: {fileID: 4441706503195941492, guid: 8b3de90970e07814a811131518361f46, type: 3}
 --- !u!1 &1746687847
 GameObject:
   m_ObjectHideFlags: 0
