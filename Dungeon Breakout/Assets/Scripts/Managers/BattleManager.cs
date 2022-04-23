@@ -3,7 +3,7 @@
  * Date Created: 11 April, 2022
  * 
  * Last Edited by: Andrew Nguyen
- * Last Edited: 21 April, 2022
+ * Last Edited: 22 April, 2022
  * 
  * Description: Manages battles. Communicates with Inventory, UI, Player, and Enemies.
  * 
@@ -32,6 +32,8 @@ public class BattleManager : MonoBehaviour
     // -Set reference to enemyRef in Game Manager
     // -Get the index of the dungeon right before the battle starts in Game Manager. After the battle is won by the player, load that.
     // -The enemy should be destroyed by getting the reference in GameManager.
+
+    private int enemyAction;
 
     [Header("SET DYNAMICALLY")]
     public GameObject playerRef;
@@ -84,8 +86,6 @@ public class BattleManager : MonoBehaviour
 
         //Instantiate enemy at the other side
         InitializeUnit(enemyRef, enemyPos);
-
-
     } //end Start()
 
     #region playerMoves
@@ -194,12 +194,42 @@ public class BattleManager : MonoBehaviour
         {
             State = battleState.PlayerTurn;
         }
-    }
+    } //end switchTurn()
+
+    public void enemyTurn()
+    {
+        //Decide what to do
+        enemyAction = Random.Range(1, 100);
+
+        //Roughly 70% they will attack
+        if (enemyAction > 30)
+        {
+            enemyAttack();
+        }
+        //10% chance they'll do a strong attack
+        else if (enemyAction < 30 && enemyAction > 20)
+        {
+            enemyChargeAttack();
+        }
+        //20% they guard
+        else
+        {
+            enemyGuard();
+        }
+
+    } //end enemyTurn()
+
     // Update is called once per frame
     void Update()
     {
         //Set up a turn system, exit the battle if the enemy or player's HP reaches 0
+        //Is it the enemy's turn?
+        if (State == battleState.EnemyTurn)
+        {
+            enemyTurn();
+        }
 
+        //Health Check
         if (CAStats.hitpoints <= 0)
         {
             Debug.Log("Game Over! Go to game over screen!");
