@@ -137,6 +137,8 @@ public class CharlieArcher : MonoBehaviour
             //plus offset for direction facing (because x = 2,4 and y = 1,3)
             int ld = (int)lastDir;
             explosion.transform.position = gameObject.transform.position + (new Vector3(x, y, 0) * 0.5f) + (new Vector3( ((ld+1)%2) * -(ld-3), (ld%2) * -(ld-2), 0));
+            //store reference to charlie on the explosion
+            explosion.GetComponent<Explosion>().summoner = this.gameObject;
         }
 
     } //end Update()
