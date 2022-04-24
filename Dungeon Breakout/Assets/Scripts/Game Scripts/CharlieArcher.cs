@@ -2,8 +2,8 @@
  * Created by: Andrew Nguyen
  * Date Created: 4 April, 2022
  * 
- * Last Edited by: Andrew Nguyen
- * Last Edited: 21 April, 2022
+ * Last Edited by: Camp Steiner
+ * Last Edited: 23 April, 2022
  * 
  * Description: General management for player
  * 
@@ -46,17 +46,22 @@ public class CharlieArcher : MonoBehaviour
     public float speed;
     public float hitpoints;
     public int potions; //how many potions the PC has. Start with 3, get more from dead enemies.
+    public GameObject explosionPrefab;
 
     private Animator animController;
     private SpriteRenderer spriteRender;
+    private enum direction { UP=1, RIGHT, DOWN, LEFT };
+    direction lastDir;
 
     void Awake()
     {
         attack = 10f; //The attack value of the punch move.
         defense = 1.00f;
-        speed = 1f;
+        speed = 2f;
         hitpoints = 100f;
 
+        //charlie starts off facing down
+        lastDir = direction.DOWN;
         animController = GetComponent<Animator>();
         spriteRender = GetComponent<SpriteRenderer>();
     } //end Awake()
@@ -91,11 +96,47 @@ public class CharlieArcher : MonoBehaviour
         pos.y += y * speed * Time.deltaTime;
         transform.position = pos;
 
+
+        //set idle animation based on direction traveling
+        if(x > 0) //heading right
+        {
+            if (y == 0) lastDir = direction.RIGHT; //player moving solely on x axis
+            else
+            {
+                if (y > 0) lastDir = (x > y) ? direction.RIGHT : direction.UP; //if more up than right, up / if more right than up, right
+                if (y < 0) lastDir = (x > -y) ? direction.RIGHT : direction.DOWN; //same but for down
+            }
+        }
+        if(x < 0)
+        {
+            if (y == 0) lastDir = direction.LEFT; //player moving solely on x axis
+            else
+            {
+                if (y > 0) lastDir = (-x > y) ? direction.LEFT : direction.UP; //if more up than left, up / if more left than up, left
+                if (y < 0) lastDir = (-x > -y) ? direction.LEFT : direction.DOWN; //same but for down
+            }
+        }
+        if (x == 0) //player moving solely on y axis
+        {
+            if (y > 0) lastDir = direction.UP;
+            if (y < 0) lastDir = direction.DOWN;
+        }
+
+        animController.SetFloat("lastDir", (float)lastDir);
+        //oh how i wish for a left facing animation
+        if (lastDir == direction.LEFT) spriteRender.flipX = true;
+
         //skills
         //maybe want to rework these to use the Unity Input Axes so controllers would work by default?
         if (Input.GetKeyDown(KeyCode.Space))
         { //main attack
-            //todo
+            GameObject explosion = Instantiate<GameObject>(explosionPrefab);
+            explosion.transform.localScale *= 0.2f;
+            //set position to be the players
+            //plus offset for if the player is moving
+            //plus offset for direction facing (because x = 2,4 and y = 1,3)
+            int ld = (int)lastDir;
+            explosion.transform.position = gameObject.transform.position + (new Vector3(x, y, 0) * 0.5f) + (new Vector3( ((ld+1)%2) * -(ld-3), (ld%2) * -(ld-2), 0));
         }
 
     } //end Update()
