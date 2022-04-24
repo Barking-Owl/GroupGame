@@ -3,7 +3,7 @@
  * Date Created: April 18, 2022
  * 
  * Last Edited by: Andrew Nguyen
- * Last Edited: April 21, 2022
+ * Last Edited: April 23, 2022
  * 
  * Description: Updates HUD Canvas referencing game manager. Manages battles
 ****/
@@ -29,6 +29,7 @@ public class BattleCanvas : MonoBehaviour
     public Text scoreTextbox; //textbox for the score
     public Text highScoreTextbox; //textbox for highscore
     public Text itemsTextbox; //dynamic health for healing potions
+    public Text statusTextbox; //What is the enemy doing? Is it our turn?
 
     //GM Data, or BM. Health is displayed center screen.
     private int level;
@@ -68,6 +69,7 @@ public class BattleCanvas : MonoBehaviour
         else
         {
             EnableBattleHUD();
+            statusTextbox.text = "Your turn.";
         }
     }//end Update()
 
@@ -99,7 +101,8 @@ public class BattleCanvas : MonoBehaviour
     {
         //if texbox exsists update value
         if (levelTextbox) { levelTextbox.text = "Level " + level + "/" + totalLevels; }
-        if (playerHealthTextbox) { playerHealthTextbox.text = "Health " + playerHealth; }
+        if (playerHealthTextbox) { playerHealthTextbox.text = "Player's Health " + playerHealth; }
+        if (enemyHealthTextbox) { enemyHealthTextbox.text = "Enemy's Health " + enemyHealth; }
         if (scoreTextbox) { scoreTextbox.text = "Score " + score; }
         if (highScoreTextbox) { highScoreTextbox.text = "High Score " + highscore; }
 
