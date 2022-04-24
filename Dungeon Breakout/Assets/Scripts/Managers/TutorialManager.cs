@@ -60,7 +60,7 @@ public class TutorialManager : MonoBehaviour
                 break;
             case 2:
                 if (Input.GetKeyDown(KeyCode.Space)) count++;
-                if (count > 4) AdvanceTutorial();
+                if (count > 3) AdvanceTutorial();
                 break;
             default:
                 return;
@@ -80,7 +80,7 @@ public class TutorialManager : MonoBehaviour
                 break;
             case 3:
                 GameObject enemy = Instantiate(enemyPrefab);
-                enemy.transform.position = new Vector3(-4.8f, -4.8f, 0);
+                enemy.transform.position = new Vector3(-4.8f, -2.8f, 0);
                 tutorialText.text = "Here comes an enemy now!\nCast <color='#6f0000'>Explode</color> on it to enter into battle!";
                 break;
         }
