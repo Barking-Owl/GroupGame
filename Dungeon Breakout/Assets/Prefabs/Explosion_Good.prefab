@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1644387530076186160}
   m_Layer: 0
   m_Name: Explosion_Good
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
