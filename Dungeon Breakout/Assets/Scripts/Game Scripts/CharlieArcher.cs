@@ -2,8 +2,8 @@
  * Created by: Andrew Nguyen
  * Date Created: 4 April, 2022
  * 
- * Last Edited by: Camp Steiner
- * Last Edited: 16 April, 2022
+ * Last Edited by: Andrew Nguyen
+ * Last Edited: 21 April, 2022
  * 
  * Description: General management for player
  * 
@@ -45,6 +45,7 @@ public class CharlieArcher : MonoBehaviour
     public float defense;
     public float speed;
     public float hitpoints;
+    public int potions; //how many potions the PC has. Start with 3, get more from dead enemies.
 
     private Animator animController;
     private SpriteRenderer spriteRender;
