@@ -81,6 +81,7 @@ public class TutorialManager : MonoBehaviour
             case 3:
                 GameObject enemy = Instantiate(enemyPrefab);
                 enemy.transform.position = new Vector3(-4.8f, -2.8f, 0);
+                enemy.GetComponent<SpriteRenderer>().flipX = true;
                 tutorialText.text = "Here comes an enemy now!\nCast <color='#6f0000'>Explode</color> on it to enter into battle!";
                 break;
         }
