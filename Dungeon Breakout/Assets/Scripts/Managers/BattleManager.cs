@@ -3,15 +3,16 @@
  * Date Created: 11 April, 2022
  * 
  * Last Edited by: Andrew Nguyen
- * Last Edited: 22 April, 2022
+ * Last Edited: 23 April, 2022
  * 
- * Description: Manages battles. Communicates with Inventory, UI, Player, and Enemies.
+ * Description: Manages battles. Communicates with Gamemanager, UI, Player, and Enemies.
  * 
 ****/
 
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class BattleManager : MonoBehaviour
@@ -43,6 +44,8 @@ public class BattleManager : MonoBehaviour
     public EnemyScript enemyStats;
     public bool guardFlag; //Did the player guard on the previous turn?
     public bool guardFlagEnemy; //Is the enemy guard on the prev turn?
+    public bool chargeFlag; //Did the enemy perform a charge attack before hand?
+    public Text statusTextbox; //What are we doing?
 
     [Header("SET IN INSPECTOR")]
     //These transforms are empty gameobjects. The background will be a part of the canvas, but the two gameobjects won't move.
@@ -159,6 +162,7 @@ public class BattleManager : MonoBehaviour
         Instantiate(explosionBad, enemyPos);
         Debug.Log("Enemy is charging a strong move");
 
+        chargeFlag = true;
         Invoke("switchTurn", 2.0f);
     } //end enemyChargeAttack()
 
@@ -171,7 +175,7 @@ public class BattleManager : MonoBehaviour
 
         //Then at the end...
         CAStats.hitpoints -= enemyStats.attack*2;
-
+        chargeFlag = false;
         //Now it is the player's turn
         Invoke("switchTurn", 2.0f);
     } //end enemyStrongAttack()
@@ -198,26 +202,47 @@ public class BattleManager : MonoBehaviour
 
     public void enemyTurn()
     {
-        //Decide what to do
-        enemyAction = Random.Range(1, 100);
-
-        //Roughly 70% they will attack
-        if (enemyAction > 30)
+        statusTextbox.text = "Enemy's turn."; 
+        if (chargeFlag == true)
         {
-            enemyAttack();
+            statusTextbox.text = "The enemy is attacking!"; 
+            enemyStrongAttack();
         }
-        //10% chance they'll do a strong attack
-        else if (enemyAction < 30 && enemyAction > 20)
-        {
-            enemyChargeAttack();
-        }
-        //20% they guard
         else
         {
-            enemyGuard();
-        }
+            //Decide what to do
+            enemyAction = Random.Range(1, 100);
 
+            //Roughly 70% they will attack
+            if (enemyAction > 30)
+            {
+                statusTextbox.text = "The enemy is attacking!";
+                enemyAttack();
+            }
+            //10% chance they'll do a strong attack
+            else if (enemyAction < 30 && enemyAction > 20)
+            {
+                statusTextbox.text = "The enemy is charging up a strong attack, they will attack with double the force as normal"; 
+                enemyChargeAttack();
+            }
+            //20% they guard
+            else
+            {
+                statusTextbox.text = "The enemy is guarding. Now is a good time to heal...";
+                enemyGuard();
+            }
+        }
     } //end enemyTurn()
+
+    public void GameOver()
+    {
+        gm.GameOver();
+    } //end GameOver()
+
+    public void BattleWon()
+    {
+        SceneManager.LoadScene(gm.lastScene); 
+    } //end BattleWon()
 
     // Update is called once per frame
     void Update()
@@ -229,17 +254,19 @@ public class BattleManager : MonoBehaviour
             enemyTurn();
         }
 
-        //Health Check
+        //Health Check; Previous level should be logged by GameManager or the Battle Manager right before the player attacks an enemy and enters the battle screen
         if (CAStats.hitpoints <= 0)
         {
+            statusTextbox.text = "Oh no..."; 
             Debug.Log("Game Over! Go to game over screen!");
-            SceneManager.LoadScene("end_scene");
+            Invoke("GameOver", 3f);
         }
         if (enemyStats.hitpoints <= 0)
         {
+            statusTextbox.text = "Right on!"; 
             Debug.Log("We won! Right on! Go back to the dungeon");
             Debug.Log("Drops should be notified on the HUD to the player");
-            SceneManager.LoadScene(gm.lastScene); //Previous level should be logged by GameManager or the Battle Manager right before the player attacks an enemy and enters the battle screen
+            Invoke("BattleWon", 3f);
 
         }
         
