@@ -3,7 +3,7 @@
  * Date Created: 11 April, 2022
  * 
  * Last Edited by: Andrew Nguyen
- * Last Edited: 23 April, 2022
+ * Last Edited: 25 April, 2022
  * 
  * Description: Manages battles. Communicates with Gamemanager, UI, Player, and Enemies.
  * 
@@ -59,21 +59,22 @@ public class BattleManager : MonoBehaviour
     private void Awake()
     {
         gm = GameManager.GM;
-        
+        //playerRef = gm.playerRef;
+        //enemyRef = gm.enemyRef;
     } //end Awake
 
-    private void InitializeUnit(GameObject s, Transform t)
+    public void InitializeUnits()
     {
-        GameObject inLevel = Instantiate(s, t);
-        inLevel.GetComponent<SpriteRenderer>().enabled = true;
-        if (s == playerRef)
-        {
-            CAStats = s.GetComponent<CharlieArcher>();
-        } //is a player
-        else
-        {
-            enemyStats = s.GetComponent<EnemyScript>();
-        } //must be an enemy
+        Debug.Log("Initializing units");
+        GameObject player = Instantiate(playerRef, playerPos);
+        CAStats = player.GetComponent<CharlieArcher>();
+
+        player.transform.localScale += new Vector3(3, 3, 3);
+
+        GameObject enemy = Instantiate(enemyRef, enemyPos);
+        enemyStats = enemy.GetComponent<EnemyScript>();
+
+        enemy.transform.localScale += new Vector3(3, 3, 3);
     } //end InitializeUnit()
 
     // Start is called before the first frame update
@@ -81,17 +82,9 @@ public class BattleManager : MonoBehaviour
     {
         //The battle will start always with the player's turn
         State = battleState.PlayerTurn;
-        playerRef = gm.playerRef;
-        enemyRef = gm.enemyRef;
+
         //Set up player and enemy
-        //Instantiate player at this location
-        InitializeUnit(playerRef, playerPos);
-
-        //Instantiate enemy at the other side
-        InitializeUnit(enemyRef, enemyPos);
-
-        Debug.Log(CAStats);
-        Debug.Log(enemyStats);
+        InitializeUnits();
     } //end Start()
 
     #region playerMoves
@@ -100,15 +93,16 @@ public class BattleManager : MonoBehaviour
     public void playerAttack()
     {
         //Instantiate a new explosion, an explosion will suffice for attack animation
+        Debug.Log("Attack connected");
         Instantiate(explosionGood, enemyPos);
 
         //The explosion will have an event at the end of it that will tell itself in its script to destroy itself.
 
         //Then at the end...
-        enemyStats.hitpoints -= CAStats.attack;
+        enemyStats.hitpoints -= CAStats.attack*enemyStats.defense;
 
         //Now it is the enemy's turn
-        Invoke("switchTurn", 2.0f);
+        switchTurn();
     } //end playerAttack()
 
     public void playerGuard()
@@ -117,7 +111,7 @@ public class BattleManager : MonoBehaviour
         //The next attack, if they choose to attack, will do a quarter of the damage.
         CAStats.defense = 0.25f;
 
-        Invoke("switchTurn", 2.0f);
+        switchTurn();
         guardFlag = true;
     } //end playerGuard()
 
@@ -134,7 +128,7 @@ public class BattleManager : MonoBehaviour
                 Debug.Log("Healed with enough health to overheal. Resetting health back to 100.");
             }
             CAStats.potions--;
-            Invoke("switchTurn", 2.0f);
+            switchTurn();
         }
         else //If there isn't, keep it on player's turn. If there is, go to enemy's turn and heal player.
         {
@@ -153,10 +147,10 @@ public class BattleManager : MonoBehaviour
         //The explosion will have an event at the end of it that will tell itself in its script to destroy itself.
 
         //Then at the end...
-        CAStats.hitpoints -= enemyStats.attack;
+        CAStats.hitpoints -= enemyStats.attack*CAStats.defense;
 
         //Now it is the player's turn
-        Invoke("switchTurn", 2.0f);
+        switchTurn();
     } //end enemyAttack()
 
     public void enemyChargeAttack()
@@ -166,7 +160,7 @@ public class BattleManager : MonoBehaviour
         Debug.Log("Enemy is charging a strong move");
 
         chargeFlag = true;
-        Invoke("switchTurn", 2.0f);
+        switchTurn();
     } //end enemyChargeAttack()
 
     public void enemyStrongAttack()
@@ -177,16 +171,16 @@ public class BattleManager : MonoBehaviour
         //The explosion will have an event at the end of it that will tell itself in its script to destroy itself.
 
         //Then at the end...
-        CAStats.hitpoints -= enemyStats.attack*2;
+        CAStats.hitpoints -= (enemyStats.attack*2)*CAStats.defense;
         chargeFlag = false;
         //Now it is the player's turn
-        Invoke("switchTurn", 2.0f);
+        switchTurn();
     } //end enemyStrongAttack()
 
     public void enemyGuard()
     {
         enemyStats.defense = 0.5f;
-        Invoke("switchTurn", 2.0f);
+        switchTurn();
         guardFlagEnemy = true;
     } //end enemyGuard()
 
@@ -216,19 +210,19 @@ public class BattleManager : MonoBehaviour
             //Decide what to do
             enemyAction = Random.Range(1, 100);
 
-            //Roughly 70% they will attack
-            if (enemyAction > 30)
+            //Roughly 80% they will attack
+            if (enemyAction > 20)
             {
                 statusTextbox.text = "The enemy is attacking!";
                 enemyAttack();
             }
             //10% chance they'll do a strong attack
-            else if (enemyAction < 30 && enemyAction > 20)
+            else if (enemyAction < 20 && enemyAction > 10)
             {
                 statusTextbox.text = "The enemy is charging up a strong attack, they will attack with double the force as normal"; 
                 enemyChargeAttack();
             }
-            //20% they guard
+            //10% they guard
             else
             {
                 statusTextbox.text = "The enemy is guarding. Now is a good time to heal...";
@@ -244,7 +238,7 @@ public class BattleManager : MonoBehaviour
 
     public void BattleWon()
     {
-        SceneManager.LoadScene(gm.lastScene); 
+        SceneManager.LoadScene(gm.lastScene);
     } //end BattleWon()
 
     // Update is called once per frame
@@ -262,14 +256,14 @@ public class BattleManager : MonoBehaviour
         {
             statusTextbox.text = "Oh no..."; 
             Debug.Log("Game Over! Go to game over screen!");
-            Invoke("GameOver", 3f);
+            GameOver();
         }
         if (enemyStats.hitpoints <= 0)
         {
             statusTextbox.text = "Right on!"; 
             Debug.Log("We won! Right on! Go back to the dungeon");
             Debug.Log("Drops should be notified on the HUD to the player");
-            Invoke("BattleWon", 3f);
+            BattleWon();
 
         }
         

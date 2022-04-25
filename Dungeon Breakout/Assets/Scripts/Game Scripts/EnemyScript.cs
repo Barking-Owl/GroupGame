@@ -59,7 +59,7 @@ public class EnemyScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Move();
+       // Move();
 
         if(bndCheck != null && bndCheck.offDown)
         {

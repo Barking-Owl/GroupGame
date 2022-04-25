@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -401,7 +401,7 @@ GameObject:
   - component: {fileID: 113743134}
   - component: {fileID: 113743133}
   m_Layer: 5
-  m_Name: Text
+  m_Name: txt_Potions
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1843,8 +1843,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   State: 0
-  playerRef: {fileID: 0}
-  enemyRef: {fileID: 0}
+  playerRef: {fileID: 7835073639563572410, guid: bb01893067c66824197200a6786aede6, type: 3}
+  enemyRef: {fileID: 3945236570273367368, guid: 3489508e365a5f548a532d8e1a3de013, type: 3}
   CAStats: {fileID: 0}
   enemyStats: {fileID: 0}
   guardFlag: 0
