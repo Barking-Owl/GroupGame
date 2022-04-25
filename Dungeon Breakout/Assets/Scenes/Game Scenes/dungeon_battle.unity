@@ -401,7 +401,7 @@ GameObject:
   - component: {fileID: 113743134}
   - component: {fileID: 113743133}
   m_Layer: 5
-  m_Name: Text
+  m_Name: txt_Potions
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
