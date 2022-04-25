@@ -3,7 +3,7 @@
  * Date Created: Feb 23, 2022
  * 
  * Last Edited by: Andrew Nguyen
- * Last Edited: April 20, 2022
+ * Last Edited: April 25, 2022
  * 
  * Description: Basic GameManager Template
 ****/
@@ -113,8 +113,8 @@ public class GameManager : MonoBehaviour
     public bool nextLevel = false; //test for next level
 
     //Win/Loose conditon
-    [SerializeField] //Access to private variables in editor
-    private bool playerWon = false;
+    //[SerializeField] //Access to private variables in editor
+    public bool playerWon = false;
 
 
     //reference to system time
