@@ -1228,6 +1228,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 334630833}
   m_CullTransparentMesh: 1
+--- !u!1 &346832495 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7835073639563572410, guid: bb01893067c66824197200a6786aede6, type: 3}
+  m_PrefabInstance: {fileID: 7835073640012054419}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &347350846 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3646083691087038865, guid: e51389dccb8ede44f9d0aa443516e104, type: 3}
@@ -2006,7 +2011,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cb4dbcdd49ab4648bd320435b5e331f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ca: {fileID: 346832495}
   levelTextbox: {fileID: 690496814}
+  playerHealthTextbox: {fileID: 856845592}
   scoreTextbox: {fileID: 1598032563}
   highScoreTextbox: {fileID: 334630835}
 --- !u!4 &601660826 stripped
@@ -2988,7 +2995,7 @@ GameObject:
   - component: {fileID: 856845593}
   - component: {fileID: 856845592}
   m_Layer: 5
-  m_Name: txt_Lives
+  m_Name: txt_playerHealth
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3046,7 +3053,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Lives 3
+  m_Text: 'Your Health: 100'
 --- !u!222 &856845593
 CanvasRenderer:
   m_ObjectHideFlags: 0
