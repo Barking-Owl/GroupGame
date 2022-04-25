@@ -78,7 +78,8 @@ public class TutorialManager : MonoBehaviour
                 tutorialText.text = "There are enemies wandering this dungeon as well.\nBetter practice your attack a few more times, just to be safe.";
                 break;
             case 3:
-                GameObject enemy = Instantiate(enemyPrefab);
+                //GameObject enemy = Instantiate(enemyPrefab);
+                GameObject enemy = Instantiate(PrefabManager.Instance.EnemyPrefab);
                 enemy.transform.position = new Vector3(-4.8f, -2.8f, 0);
                 enemy.GetComponent<SpriteRenderer>().flipX = true;
                 tutorialText.text = "Here comes an enemy now!\nCast <color='#6f0000'>Explode</color> on it to enter into battle!";

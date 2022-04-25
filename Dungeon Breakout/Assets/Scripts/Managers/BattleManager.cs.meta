@@ -3,7 +3,16 @@ guid: c335a51dba6da25439b0d9bc1031da07
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - playerRef: {instanceID: 0}
+  - enemyRef: {fileID: 3945236570273367368, guid: 3489508e365a5f548a532d8e1a3de013, type: 3}
+  - CAStats: {instanceID: 0}
+  - enemyStats: {instanceID: 0}
+  - statusTextbox: {instanceID: 0}
+  - playerPos: {instanceID: 0}
+  - enemyPos: {instanceID: 0}
+  - explosionGood: {instanceID: 0}
+  - explosionBad: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
