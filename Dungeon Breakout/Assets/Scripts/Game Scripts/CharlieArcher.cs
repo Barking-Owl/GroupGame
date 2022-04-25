@@ -47,11 +47,12 @@ public class CharlieArcher : MonoBehaviour
     public float hitpoints;
     public int potions; //how many potions the PC has. Start with 3, get more from dead enemies.
     public GameObject explosionPrefab;
+    public static bool isDisabled;
 
     private Animator animController;
     private SpriteRenderer spriteRender;
-    private enum direction { UP=1, RIGHT, DOWN, LEFT };
-    direction lastDir;
+    public enum direction { UP=1, RIGHT, DOWN, LEFT };
+    public direction lastDir;
 
     void Awake()
     {
@@ -64,6 +65,7 @@ public class CharlieArcher : MonoBehaviour
         lastDir = direction.DOWN;
         animController = GetComponent<Animator>();
         spriteRender = GetComponent<SpriteRenderer>();
+        isDisabled = false;
     } //end Awake()
 
     // Start is called before the first frame update
@@ -75,6 +77,8 @@ public class CharlieArcher : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+       
+        if (isDisabled) return;
         if (hitpoints <= 0 )
         {
             Destroy(this); //Death animation
