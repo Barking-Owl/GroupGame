@@ -68,7 +68,7 @@ public class BattleManager : MonoBehaviour
         Debug.Log("Initializing units");
         GameObject player = Instantiate(playerRef, playerPos);
         CAStats = player.GetComponent<CharlieArcher>();
-
+        CharlieArcher.isDisabled = true;
         player.transform.localScale += new Vector3(3, 3, 3);
 
         GameObject enemy = Instantiate(enemyRef, enemyPos);
@@ -238,6 +238,7 @@ public class BattleManager : MonoBehaviour
 
     public void BattleWon()
     {
+        gm.tutorialStage++;
         SceneManager.LoadScene(gm.lastScene);
     } //end BattleWon()
 

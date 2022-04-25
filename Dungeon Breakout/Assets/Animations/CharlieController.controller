@@ -26,14 +26,14 @@ AnimatorState:
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
---- !u!1102 &-3145402204363654537
+--- !u!1102 &-5536374703880423205
 AnimatorState:
   serializedVersion: 6
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Charlie_idle
+  m_Name: Battle
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -46,12 +46,12 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 581fef4c47d35bb45b91394547605ff1, type: 2}
+  m_Motion: {fileID: 0}
   m_Tag: 
-  m_SpeedParameter: 
+  m_SpeedParameter: xAxis
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
-  m_TimeParameter: 
+  m_TimeParameter: xAxis
 --- !u!206 &-95951936147264912
 BlendTree:
   m_ObjectHideFlags: 1
@@ -134,6 +134,12 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
+  - m_Name: inBattle
+    m_Type: 9
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 1
+    m_Controller: {fileID: 0}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -187,10 +193,18 @@ BlendTree:
     m_CycleOffset: 0
     m_DirectBlendParameter: xAxis
     m_Mirror: 0
+  - serializedVersion: 2
+    m_Motion: {fileID: 7400000, guid: 286712e5b9739c94787161e991b770dc, type: 2}
+    m_Threshold: 5
+    m_Position: {x: 0, y: 0}
+    m_TimeScale: 1
+    m_CycleOffset: 0
+    m_DirectBlendParameter: xAxis
+    m_Mirror: 0
   m_BlendParameter: lastDir
   m_BlendParameterY: lastDir
   m_MinThreshold: 1
-  m_MaxThreshold: 4
+  m_MaxThreshold: 5
   m_UseAutomaticThresholds: 0
   m_NormalizedBlendValues: 0
   m_BlendType: 0
@@ -207,8 +221,8 @@ AnimatorStateMachine:
     m_State: {fileID: -8726666738262708585}
     m_Position: {x: 110, y: 190, z: 0}
   - serializedVersion: 1
-    m_State: {fileID: -3145402204363654537}
-    m_Position: {x: 145, y: 255, z: 0}
+    m_State: {fileID: -5536374703880423205}
+    m_Position: {x: 210, y: 280, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []

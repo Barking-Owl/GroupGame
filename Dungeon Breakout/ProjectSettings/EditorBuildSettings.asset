@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Game Scenes/dungeon_battle.unity
     guid: 99920b949492d584eaec0ad3ad06d1a1
+  - enabled: 1
+    path: Assets/Scenes/Game Scenes/dungeon_01.unity
+    guid: 1d1e86d026162b441b168b71ba12653e
   m_configObjects: {}
