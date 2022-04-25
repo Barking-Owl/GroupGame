@@ -1254,6 +1254,7 @@ MonoBehaviour:
   playerRef: {fileID: 0}
   enemyRef: {fileID: 0}
   lastScene: 
+  tutorialStage: 0
   TestGameManager: 0
   levelLost: 0
   nextLevel: 0
@@ -1735,7 +1736,8 @@ MonoBehaviour:
   enemyHealthTextbox: {fileID: 1746687849}
   scoreTextbox: {fileID: 1453655710}
   highScoreTextbox: {fileID: 2086147213}
-  itemsTextbox: {fileID: 113743133}
+  itemsBox: {fileID: 62699840}
+  itemsTextBox: {fileID: 113743133}
   statusTextbox: {fileID: 2103503705}
 --- !u!114 &1718228170
 MonoBehaviour:
