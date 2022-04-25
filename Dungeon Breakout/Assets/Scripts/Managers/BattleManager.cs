@@ -238,8 +238,7 @@ public class BattleManager : MonoBehaviour
 
     public void BattleWon()
     {
-        gm.playerWon = true;
-        gm.GameOver();
+        SceneManager.LoadScene(gm.lastScene);
     } //end BattleWon()
 
     // Update is called once per frame
