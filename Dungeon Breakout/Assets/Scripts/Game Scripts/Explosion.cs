@@ -29,17 +29,13 @@ public class Explosion : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (gameObject.tag == other.tag) return; //don't collide with self/allies
-        //need to keep the two battlers around in the next scene
-        DontDestroyOnLoad(summoner);
-        DontDestroyOnLoad(other.gameObject);
+        if (gameObject.tag == other.tag || CharlieArcher.isDisabled) return; //don't collide with self/allies
+        GameObject otherGO = other.gameObject;
+        
         //set reference to be used in battlemanager
-        //maybe want to look into saving stats instead of whole gameobject?
         gm.playerRef = summoner;
-        gm.enemyRef = other.gameObject;
-        //hide in the next scene
-        summoner.GetComponent<SpriteRenderer>().enabled = false;
-        other.gameObject.GetComponent<SpriteRenderer>().enabled = false;
+        gm.enemyRef = otherGO;
+        
         //go to battle scene
         gm.GoBattle();
     }

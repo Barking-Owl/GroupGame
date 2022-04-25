@@ -15,7 +15,7 @@ using UnityEngine.UI;
 
 public class TutorialManager : MonoBehaviour
 {
-    private int step = 0;
+    public int step;
     //stuff for various stages of the tutorial
     private bool left, right, up, down;
     private int count;
@@ -38,6 +38,8 @@ public class TutorialManager : MonoBehaviour
         tutorialText.text = "Welcome, Adventurer!\nYou are Charlie Archer, an unfortunately named mage.\n\nMove using <color='#6363d5'>WASD</color> or the arrow keys.";
         //set up variables
         left = right = up = down = false;
+        step = GameManager.GM.tutorialStage;
+        AdvanceTutorial();
     }
 
     // Update is called once per frame
@@ -52,14 +54,33 @@ public class TutorialManager : MonoBehaviour
                 if (x < 0) left = true;
                 if (y > 0) up = true;
                 if (y < 0) down = true;
-                if (up && down && left && right) AdvanceTutorial();
+                if (up && down && left && right)
+                {
+                    step++;
+                    AdvanceTutorial();
+                }
                 break;
             case 1:
-                if (Input.GetKeyDown(KeyCode.Space)) AdvanceTutorial();
+                if (Input.GetKeyDown(KeyCode.Space))
+                {
+                    step++;
+                    AdvanceTutorial();
+                }
                 break;
             case 2:
                 if (Input.GetKeyDown(KeyCode.Space)) count++;
-                if (count > 3) AdvanceTutorial();
+                if (count > 3)
+                {
+                    step++;
+                    AdvanceTutorial();
+                }
+                break;
+            case 4:
+                Vector3 caPos = CharlieArcher.CA.gameObject.transform.position;
+                if (caPos.x > 8.8f || caPos.x < -8.8f || caPos.y > 6.0f || caPos.y < -3.5f)
+                {
+                    UnityEngine.SceneManagement.SceneManager.LoadScene("dungeon_01");
+                }
                 break;
             default:
                 return;
@@ -69,7 +90,7 @@ public class TutorialManager : MonoBehaviour
 
     void AdvanceTutorial()
     {
-        switch (++step) 
+        switch (step) 
         {
             case 1:
                 tutorialText.text = "Well done!\nYou have been trapped in this dungeon by a mysterious entity, with only rumors of a locked door to the exit somewhere.\nYou can cast an explosion using <color='#6f0000'>Space</color>";
@@ -80,9 +101,15 @@ public class TutorialManager : MonoBehaviour
             case 3:
                 GameObject enemy = Instantiate(enemyPrefab);
                 //GameObject enemy = Instantiate(PrefabManager.Instance.EnemyPrefab);
-                enemy.transform.position = new Vector3(-4.8f, -2.8f, 0);
+                enemy.transform.position = new Vector3(Random.Range(-5f, 5f), Random.Range(-2f, 0f), 0);
                 enemy.GetComponent<SpriteRenderer>().flipX = true;
                 tutorialText.text = "Here comes an enemy now!\nCast <color='#6f0000'>Explode</color> on it to enter into battle!";
+                GameManager.GM.tutorialStage = step;
+                break;
+            case 4:
+                GameManager.GM.playerRef = null;
+                GameManager.GM.enemyRef = null;
+                tutorialText.text = "Well done! You vanquished the enemy!\nYou are now ready to begin your real quest.\nBe on your way now, and good luck <color='#006400'>escaping the dungeon.</color>";
                 break;
         }
     }
