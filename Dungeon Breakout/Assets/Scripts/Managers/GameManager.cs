@@ -295,29 +295,6 @@ public class GameManager : MonoBehaviour
 
     }//end NextLevel()
 
-    /*
-    //PLAYER LOST A LIFE
-    public void LostLife()
-    {
-        if (lives == 1) //if there is one life left and it is lost
-        {
-            GameOver(); //game is over
-
-        } 
-        else
-        {
-            lives--; //subtract from lives reset level lost 
-
-            //if this level resets when life is lost
-            if (resetLostLevel){
-                numberOfLives = lives; //set lives left for level reset
-                StartGame(); //restart the level
-            }//end if (resetLostLevel)
-
-        } // end elseif
-    }//end LostLife()
-    */
-
     //CHECK SCORE UPDATES
     public void UpdateScore(int point = 0)
     { //This method manages the score on update. 
