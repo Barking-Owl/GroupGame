@@ -36,7 +36,6 @@ public class TutorialManager : MonoBehaviour
         //tutorialText.fontSize = defaultFontSize;
         //initial tutorial text;
         tutorialText.text = "Welcome, Adventurer!\nYou are Charlie Archer, an unfortunately named mage.\n\nMove using <color='#6363d5'>WASD</color> or the arrow keys.";
-
         //set up variables
         left = right = up = down = false;
     }
@@ -80,6 +79,7 @@ public class TutorialManager : MonoBehaviour
                 break;
             case 3:
                 GameObject enemy = Instantiate(enemyPrefab);
+                //GameObject enemy = Instantiate(PrefabManager.Instance.EnemyPrefab);
                 enemy.transform.position = new Vector3(-4.8f, -2.8f, 0);
                 enemy.GetComponent<SpriteRenderer>().flipX = true;
                 tutorialText.text = "Here comes an enemy now!\nCast <color='#6f0000'>Explode</color> on it to enter into battle!";

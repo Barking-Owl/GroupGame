@@ -180,9 +180,12 @@ MonoBehaviour:
   startScene: start_scene
   gameOverScene: end_scene
   gameLevels:
-  - level_00
-  - level_01
+  - dungeon_00
+  - dungeon_01
   gameLevelsCount: 0
+  playerRef: {fileID: 0}
+  enemyRef: {fileID: 0}
+  lastScene: 
   TestGameManager: 1
   levelLost: 0
   nextLevel: 0
