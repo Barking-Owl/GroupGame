@@ -51,7 +51,7 @@ public class BattleCanvas : MonoBehaviour
         //reference to levle info
         level = gm.gameLevelsCount;
         totalLevels = gm.gameLevels.Length;
-        itemsTextBox = itemsBox.gameObject.GetComponent<Text>();
+        itemsTextBox = itemsBox.gameObject.GetComponentInChildren<Text>();
         battleHUDArray = GameObject.FindGameObjectsWithTag("Player Battle Options");
 
 
