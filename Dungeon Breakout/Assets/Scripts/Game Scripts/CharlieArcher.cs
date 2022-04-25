@@ -29,14 +29,14 @@ public class CharlieArcher : MonoBehaviour
         if (ca == null)
         {
             ca = this; //set ca to this GameObject
-            Debug.Log(ca);
+            //Debug.Log(ca);
         }
         else //else if gm is not null a Game Manager must already exsist
         {
             Destroy(this.gameObject); //In this case you need to delete this gm
         }
-        DontDestroyOnLoad(this); //Do not delete the GameManager when scenes load
-        Debug.Log(ca);
+        //DontDestroyOnLoad(this); //Do not delete the GameManager when scenes load
+        //Debug.Log(ca);
     }//end CheckPCIsInScene()
     #endregion
 
@@ -56,6 +56,8 @@ public class CharlieArcher : MonoBehaviour
 
     void Awake()
     {
+        CheckPCIsInScene();
+
         attack = 10f; //The attack value of the punch move.
         defense = 1.00f;
         speed = 2f;
@@ -66,6 +68,9 @@ public class CharlieArcher : MonoBehaviour
         animController = GetComponent<Animator>();
         spriteRender = GetComponent<SpriteRenderer>();
         isDisabled = false;
+        animController.SetFloat("xAxis", 0f);
+        animController.SetFloat("yAxis", 0f);
+        animController.SetFloat("lastDir", 5f);
     } //end Awake()
 
     // Start is called before the first frame update
