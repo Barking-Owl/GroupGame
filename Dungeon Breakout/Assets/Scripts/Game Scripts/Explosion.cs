@@ -14,10 +14,12 @@ using UnityEngine;
 
 public class Explosion : MonoBehaviour
 {
+    public GameObject summoner;
+    private GameManager gm;
     // Start is called before the first frame update
     void Start()
     {
-        
+        gm = GameManager.GM;
     }
 
     // Update is called once per frame
@@ -25,7 +27,13 @@ public class Explosion : MonoBehaviour
     {
         
     }
-
+    private void OnTriggerEnter(Collider other)
+    {
+        if (gameObject.tag == other.tag) return; //don't collide with self/allies
+        gm.playerRef = summoner;
+        gm.enemyRef = other.gameObject;
+        gm.GoBattle();
+    }
     public void ExplosionEnd()
     {
         Destroy(gameObject);
