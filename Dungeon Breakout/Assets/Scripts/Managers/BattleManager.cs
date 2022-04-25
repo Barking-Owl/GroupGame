@@ -65,6 +65,7 @@ public class BattleManager : MonoBehaviour
 
     public void InitializeUnits()
     {
+        Debug.Log("Initializing units");
         GameObject player = Instantiate(playerRef, playerPos);
         CAStats = player.GetComponent<CharlieArcher>();
 
@@ -92,12 +93,13 @@ public class BattleManager : MonoBehaviour
     public void playerAttack()
     {
         //Instantiate a new explosion, an explosion will suffice for attack animation
+        Debug.Log("Attack connected");
         Instantiate(explosionGood, enemyPos);
 
         //The explosion will have an event at the end of it that will tell itself in its script to destroy itself.
 
         //Then at the end...
-        enemyStats.hitpoints -= CAStats.attack;
+        enemyStats.hitpoints -= CAStats.attack*enemyStats.defense;
 
         //Now it is the enemy's turn
         switchTurn();
@@ -145,7 +147,7 @@ public class BattleManager : MonoBehaviour
         //The explosion will have an event at the end of it that will tell itself in its script to destroy itself.
 
         //Then at the end...
-        CAStats.hitpoints -= enemyStats.attack;
+        CAStats.hitpoints -= enemyStats.attack*CAStats.defense;
 
         //Now it is the player's turn
         switchTurn();
@@ -169,7 +171,7 @@ public class BattleManager : MonoBehaviour
         //The explosion will have an event at the end of it that will tell itself in its script to destroy itself.
 
         //Then at the end...
-        CAStats.hitpoints -= enemyStats.attack*2;
+        CAStats.hitpoints -= (enemyStats.attack*2)*CAStats.defense;
         chargeFlag = false;
         //Now it is the player's turn
         switchTurn();
@@ -208,19 +210,19 @@ public class BattleManager : MonoBehaviour
             //Decide what to do
             enemyAction = Random.Range(1, 100);
 
-            //Roughly 70% they will attack
-            if (enemyAction > 30)
+            //Roughly 80% they will attack
+            if (enemyAction > 20)
             {
                 statusTextbox.text = "The enemy is attacking!";
                 enemyAttack();
             }
             //10% chance they'll do a strong attack
-            else if (enemyAction < 30 && enemyAction > 20)
+            else if (enemyAction < 20 && enemyAction > 10)
             {
                 statusTextbox.text = "The enemy is charging up a strong attack, they will attack with double the force as normal"; 
                 enemyChargeAttack();
             }
-            //20% they guard
+            //10% they guard
             else
             {
                 statusTextbox.text = "The enemy is guarding. Now is a good time to heal...";

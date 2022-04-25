@@ -3,7 +3,7 @@
  * Date Created: April 18, 2022
  * 
  * Last Edited by: Andrew Nguyen
- * Last Edited: April 23, 2022
+ * Last Edited: April 25, 2022
  * 
  * Description: Updates HUD Canvas referencing game manager. Manages battles
 ****/
@@ -28,7 +28,8 @@ public class BattleCanvas : MonoBehaviour
     public Text enemyHealthTextbox; //textbox for the enemy
     public Text scoreTextbox; //textbox for the score
     public Text highScoreTextbox; //textbox for highscore
-    public Text itemsTextbox; //dynamic health for healing potions
+    public Button itemsBox; //dynamic health for healing potions
+    public Text itemsTextBox;
     public Text statusTextbox; //What is the enemy doing? Is it our turn?
 
     //GM Data, or BM. Health is displayed center screen.
@@ -42,6 +43,7 @@ public class BattleCanvas : MonoBehaviour
     private void Awake()
     {
         bm = GetComponent<BattleManager>();
+
     }
     private void Start()
     {
@@ -49,7 +51,7 @@ public class BattleCanvas : MonoBehaviour
         //reference to levle info
         level = gm.gameLevelsCount;
         totalLevels = gm.gameLevels.Length;
-
+        itemsTextBox = statusTextbox.gameObject.GetComponent<Text>();
         battleHUDArray = GameObject.FindGameObjectsWithTag("Player Battle Options");
 
 
@@ -107,7 +109,7 @@ public class BattleCanvas : MonoBehaviour
         if (highScoreTextbox) { highScoreTextbox.text = "High Score " + highscore; }
 
         //New content - mainly heal needs to be taken care of as it will show how many health potions are left
-        if (itemsTextbox) { itemsTextbox.text = "Heal (" + bm.CAStats.potions + ")"; }
+        if (itemsTextBox) { itemsTextBox.text = "Heal (" + bm.CAStats.potions + ")"; }
 
     }//end SetHUD()
 
@@ -125,6 +127,7 @@ public class BattleCanvas : MonoBehaviour
 
     public void Attack()
     {
+        Debug.Log("Attacking");
         bm.playerAttack();
     } //end Attack()
 
