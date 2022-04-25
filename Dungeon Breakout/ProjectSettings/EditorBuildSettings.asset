@@ -6,9 +6,18 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Menu Scenes/start_scene.unity
+    guid: 950eb5b64988172409c245cf5588095e
+  - enabled: 1
     path: Assets/Scenes/Game Scenes/dungeon_00.unity
     guid: e8ef4fe73e2b1c945b5d632a3a797ae0
   - enabled: 1
     path: Assets/Scenes/Game Scenes/dungeon_battle.unity
     guid: 99920b949492d584eaec0ad3ad06d1a1
+  - enabled: 1
+    path: Assets/Scenes/Game Scenes/dungeon_01.unity
+    guid: 1d1e86d026162b441b168b71ba12653e
+  - enabled: 1
+    path: Assets/Scenes/Menu Scenes/end_scene.unity
+    guid: bc32eb117b0fba6428d47afd7e20af10
   m_configObjects: {}
