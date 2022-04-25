@@ -36,7 +36,6 @@ public class TutorialManager : MonoBehaviour
         //tutorialText.fontSize = defaultFontSize;
         //initial tutorial text;
         tutorialText.text = "Welcome, Adventurer!\nYou are Charlie Archer, an unfortunately named mage.\n\nMove using <color='#6363d5'>WASD</color> or the arrow keys.";
-
         //set up variables
         left = right = up = down = false;
     }

@@ -59,13 +59,13 @@ public class BattleManager : MonoBehaviour
     private void Awake()
     {
         gm = GameManager.GM;
-        playerRef = gm.playerRef;
-        enemyRef = gm.enemyRef;
+        
     } //end Awake
 
     private void InitializeUnit(GameObject s, Transform t)
     {
-        Instantiate(s, t);
+        GameObject inLevel = Instantiate(s, t);
+        inLevel.GetComponent<SpriteRenderer>().enabled = true;
         if (s == playerRef)
         {
             CAStats = s.GetComponent<CharlieArcher>();
@@ -81,14 +81,17 @@ public class BattleManager : MonoBehaviour
     {
         //The battle will start always with the player's turn
         State = battleState.PlayerTurn;
-
+        playerRef = gm.playerRef;
+        enemyRef = gm.enemyRef;
         //Set up player and enemy
-
         //Instantiate player at this location
         InitializeUnit(playerRef, playerPos);
 
         //Instantiate enemy at the other side
         InitializeUnit(enemyRef, enemyPos);
+
+        Debug.Log(CAStats);
+        Debug.Log(enemyStats);
     } //end Start()
 
     #region playerMoves
