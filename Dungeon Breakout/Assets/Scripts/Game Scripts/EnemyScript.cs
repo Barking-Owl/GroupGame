@@ -23,6 +23,9 @@ public class EnemyScript : MonoBehaviour
     public float defense; //How much can they resist an attack
     public float speed; //How well can they evade attacks?
 
+    public Vector3 targetOffset = Vector3.forward * 2f;
+    public float waitSecs = 3f;
+
     private boundsCheck bndCheck;
 
     public Vector3 pos
@@ -33,9 +36,22 @@ public class EnemyScript : MonoBehaviour
 
     public virtual void Move()
     {
+        //yield return new WaitForSeconds(waitSecs);
+
+
         Vector3 temPos = pos;
-        temPos.y -= speed * Time.deltaTime;
+        temPos.x -= speed * Time.deltaTime;
         pos = temPos;
+
+        if (bndCheck != null && bndCheck.offLeft)
+        {
+            speed *= -1;
+            Move();
+        }
+
+
+
+
     } // end Move()
 
     void Awake()
@@ -59,12 +75,11 @@ public class EnemyScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       // Move();
+       
+        
+        Move();
 
-        if(bndCheck != null && bndCheck.offDown)
-        {
-            //if statement for changing enemy direction before it leaves screen
-        }
+
 
         if (hitpoints <= 0)
         {
