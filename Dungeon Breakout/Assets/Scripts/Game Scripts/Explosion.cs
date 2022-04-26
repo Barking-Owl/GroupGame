@@ -34,6 +34,7 @@ public class Explosion : MonoBehaviour
         DontDestroyOnLoad(summoner);
         DontDestroyOnLoad(other.gameObject);
         //set reference to be used in battlemanager
+<<<<<<< Updated upstream
         //maybe want to look into saving stats instead of whole gameobject?
         gm.playerRef = summoner;
         gm.enemyRef = other.gameObject;
@@ -42,6 +43,17 @@ public class Explosion : MonoBehaviour
         other.gameObject.GetComponent<SpriteRenderer>().enabled = false;
         //go to battle scene
         gm.GoBattle();
+=======
+        if(other.tag == "Enemy")
+        {
+            gm.playerRef = summoner;
+            gm.enemyRef = otherGO;
+
+            //go to battle scene
+            gm.GoBattle();
+        }
+
+>>>>>>> Stashed changes
     }
     public void ExplosionEnd()
     {

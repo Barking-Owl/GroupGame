@@ -239,6 +239,7 @@ public class BattleManager : MonoBehaviour
     public void BattleWon()
     {
         SceneManager.LoadScene(gm.lastScene);
+        Destroy(enemyRef);
     } //end BattleWon()
 
     // Update is called once per frame
