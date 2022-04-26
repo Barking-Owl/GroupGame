@@ -174,7 +174,6 @@ public class GameManager : MonoBehaviour
         //-OnCollisionEnter
         //-Set playerRef and enemyRef to what it is here in gm
         lastScene = SceneManager.GetActiveScene().name; //Get this scene so we return to it later
-        if(lastScene == "dungeon_00") 
         SceneManager.LoadScene("dungeon_battle");
     } //end GoBattle()
 
