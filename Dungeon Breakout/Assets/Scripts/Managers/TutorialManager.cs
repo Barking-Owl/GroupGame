@@ -3,7 +3,7 @@
  * Date Created: 20 April, 2022
  * 
  * Last Edited by: Camp Steiner
- * Last Edited: 20 April, 2022
+ * Last Edited: 25 April, 2022
  * 
  * Description: Tutorial to teach the player controls and basic battle
  * 
@@ -26,6 +26,7 @@ public class TutorialManager : MonoBehaviour
     public Color defaultTextColor;
     public int defaultFontSize;
     public GameObject enemyPrefab;
+    public GameObject exitDoor;
 
 
     
@@ -39,7 +40,10 @@ public class TutorialManager : MonoBehaviour
         //set up variables
         left = right = up = down = false;
         step = GameManager.GM.tutorialStage;
+        GameManager.GM.tutorialActive = true;
         AdvanceTutorial();
+        CharlieArcher.CA.topLeftBound = new Vector2(-8.9f, 4.75f);
+        CharlieArcher.CA.botRightBound = new Vector2(8.9f,-3.31f);
     }
 
     // Update is called once per frame
@@ -75,13 +79,13 @@ public class TutorialManager : MonoBehaviour
                     AdvanceTutorial();
                 }
                 break;
-            case 4:
+            /*case 4:
                 Vector3 caPos = CharlieArcher.CA.gameObject.transform.position;
                 if (caPos.x > 8.8f || caPos.x < -8.8f || caPos.y > 6.0f || caPos.y < -3.5f)
                 {
                     UnityEngine.SceneManagement.SceneManager.LoadScene("dungeon_01");
                 }
-                break;
+                break;*/
             default:
                 return;
         }
@@ -109,7 +113,9 @@ public class TutorialManager : MonoBehaviour
             case 4:
                 GameManager.GM.playerRef = null;
                 GameManager.GM.enemyRef = null;
-                tutorialText.text = "Well done! You vanquished the enemy!\nYou are now ready to begin your real quest.\nBe on your way now, and good luck <color='#006400'>escaping the dungeon.</color>";
+                tutorialText.text = "Well done! You vanquished the enemy!\nYou are now ready to begin your real quest.\nBe on your way now, and good luck escaping the dungeon.\nCast <color='#6f0000'>Explode</color> on the <color='#A27C5B'>door</color> to leave.";
+                exitDoor.SetActive(true);
+                GameManager.GM.tutorialActive = false;
                 break;
         }
     }

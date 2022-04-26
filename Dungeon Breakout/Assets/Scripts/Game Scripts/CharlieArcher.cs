@@ -51,6 +51,9 @@ public class CharlieArcher : MonoBehaviour
 
     private Animator animController;
     private SpriteRenderer spriteRender;
+    public Vector2 topLeftBound;
+    public Vector2 botRightBound;
+    private bool ignoreBoundsForDebug = false;
     public enum direction { UP=1, RIGHT, DOWN, LEFT };
     public direction lastDir;
 
@@ -84,6 +87,8 @@ public class CharlieArcher : MonoBehaviour
     {
        
         if (isDisabled) return;
+        //moveCamera mc = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<moveCamera>();
+        
         if (hitpoints <= 0 )
         {
             Destroy(this); //Death animation
@@ -92,7 +97,8 @@ public class CharlieArcher : MonoBehaviour
         //movement
         float x = Input.GetAxis("Horizontal");
         float y = Input.GetAxis("Vertical");
-        
+
+
         //send stuff to blend tree for animation
         animController.SetFloat("xAxis", x);
         animController.SetFloat("yAxis", y);
@@ -100,14 +106,21 @@ public class CharlieArcher : MonoBehaviour
         //flip sprite if we are going left
         spriteRender.flipX = (x < 0);
 
+
         Vector3 pos = transform.position;
-        pos.x += x * speed * Time.deltaTime;
-        pos.y += y * speed * Time.deltaTime;
+        float newX = pos.x + (x * speed * Time.deltaTime);
+        float newY = pos.y + (y * speed * Time.deltaTime);
+
+        if ((newY > botRightBound.y && newY < topLeftBound.y && newX > topLeftBound.x && newX < botRightBound.x) || ignoreBoundsForDebug)
+        {
+            pos.x = newX;
+            pos.y = newY;
+        }
+        
         transform.position = pos;
 
-
         //set idle animation based on direction traveling
-        if(x > 0) //heading right
+        if (x > 0) //heading right
         {
             if (y == 0) lastDir = direction.RIGHT; //player moving solely on x axis
             else
