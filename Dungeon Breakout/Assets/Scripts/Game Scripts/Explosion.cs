@@ -2,8 +2,8 @@
  * Created by: Andrew Nguyen
  * Date Created: April 20, 2022
  * 
- * Last Edited by: Andrew Nguyen
- * Last Edited: April 20, 2022
+ * Last Edited by: Camp Steiner
+ * Last Edited: April 25, 2022
  * 
  * Description: Manages the explosion
 ****/
@@ -29,8 +29,22 @@ public class Explosion : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (gameObject.tag == other.tag || CharlieArcher.isDisabled) return; //don't collide with self/allies
+        if (gameObject.tag == other.tag || CharlieArcher.isDisabled || other.tag == "Wall") return; //don't collide with self/allies
         GameObject otherGO = other.gameObject;
+        if (other.tag == "Door")
+        {
+            if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "dungeon_00")
+            {
+                gm.tutorialActive = false;
+                UnityEngine.SceneManagement.SceneManager.LoadScene("dungeon_01");
+                return;
+            }
+            else
+            {
+                doorScript ds = otherGO.GetComponent<doorScript>();
+                GameObject.FindGameObjectWithTag("MainCamera").GetComponent<moveCamera>().SetCamera(ds.destination, ds.source);
+            }
+        }
         
         //set reference to be used in battlemanager
         gm.playerRef = summoner;

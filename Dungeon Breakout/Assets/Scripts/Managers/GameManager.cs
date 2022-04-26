@@ -101,6 +101,7 @@ public class GameManager : MonoBehaviour
     public GameObject enemyRef;
     public string lastScene;
     public int tutorialStage = 0;
+    public bool tutorialActive;
 
     [Header("FOR TESTING")]
     public bool TestGameManager = false; // test game manager functionality

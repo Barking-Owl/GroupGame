@@ -2,7 +2,7 @@
  * Created by: Andrew Nguyen
  * Date Created: 11 April, 2022
  * 
- * Last Edited by: Andrew Nguyen
+ * Last Edited by: Camp Steiner
  * Last Edited: 25 April, 2022
  * 
  * Description: Manages battles. Communicates with Gamemanager, UI, Player, and Enemies.
