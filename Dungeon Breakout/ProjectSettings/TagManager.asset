@@ -7,6 +7,8 @@ TagManager:
   - Player Battle Options
   - TutorialText
   - Enemy
+  - Wall
+  - Door
   layers:
   - Default
   - TransparentFX
