@@ -42,6 +42,8 @@ public class TutorialManager : MonoBehaviour
         step = GameManager.GM.tutorialStage;
         GameManager.GM.tutorialActive = true;
         AdvanceTutorial();
+        CharlieArcher.CA.topLeftBound = new Vector2(-8.9f, 4.75f);
+        CharlieArcher.CA.botRightBound = new Vector2(8.9f,-3.31f);
     }
 
     // Update is called once per frame
