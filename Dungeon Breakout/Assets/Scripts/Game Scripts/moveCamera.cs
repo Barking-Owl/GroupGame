@@ -14,6 +14,7 @@ using UnityEngine;
 
 public class moveCamera : MonoBehaviour
 {
+    public static int curRoom;
     // Start is called before the first frame update
     void Start()
     {
@@ -33,6 +34,7 @@ public class moveCamera : MonoBehaviour
         switch (to)
         {
             case 0:
+                curRoom = 0;
                 gameObject.GetComponent<Camera>().orthographicSize = DEFAULT_SIZE;
                 gameObject.transform.position = new Vector3(0, 1, -10);
                 CA.topLeftBound = new Vector2(-4.3f, 2.95f);
@@ -45,9 +47,13 @@ public class moveCamera : MonoBehaviour
                     case 1:
                         charles.transform.position = new Vector3(-4.3f, 1f, 0);
                         break;
+                    default:
+                        charles.transform.position = new Vector3(0f, 1f, 0);
+                        break;
                 }
                 break;
             case 1:
+                curRoom = 1;
                 gameObject.GetComponent<Camera>().orthographicSize = DEFAULT_SIZE;
                 gameObject.transform.position = new Vector3(-20, 1, -10);
                 CA.topLeftBound = new Vector2(-25f, 2.95f);
@@ -60,9 +66,13 @@ public class moveCamera : MonoBehaviour
                     case 2:
                         charles.transform.position = new Vector3(-21.3f, 2.79f, 0);
                         break;
+                    default:
+                        charles.transform.position = new Vector3(-20f, 1f, 0);
+                        break;
                 }
                 break;
             case 2:
+                curRoom = 2;
                 gameObject.GetComponent<Camera>().orthographicSize = DEFAULT_SIZE;
                 gameObject.transform.position = new Vector3(-20f, 12.5f, -10);
                 CA.topLeftBound = new Vector2(-25f, 15f);
@@ -71,6 +81,9 @@ public class moveCamera : MonoBehaviour
                 { 
                     case 1:
                         charles.transform.position = new Vector3(-21.3f, 9.9f, 0);
+                        break;
+                    default:
+                        charles.transform.position = new Vector3(-20f, 12.5f, 0);
                         break;
                 }
                 break;

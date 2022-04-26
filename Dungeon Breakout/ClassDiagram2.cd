@@ -1,0 +1,139 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="BattleCanvas">
+    <Position X="4" Y="1.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>gAaAAAACICEAQFKgAACJAgIgAJEBgAQAgAAAAAAAAEA=</HashCode>
+      <FileName>Assets\Scripts\Canvas Managers\BattleCanvas.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EndCanvas" Collapsed="true">
+    <Position X="0.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAASACAAAEEAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Canvas Managers\EndCanvas.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HUDCanvas">
+    <Position X="6" Y="1.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAQABAAAICEAQEAAAAAIAgIAABEAAAQAgAAAAAAAAIg=</HashCode>
+      <FileName>Assets\Scripts\Canvas Managers\HUDCanvas.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StartCanvas" Collapsed="true">
+    <Position X="0.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACACACAEkAAAAAAAAAAAAAAAAAAAAAABAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Canvas Managers\StartCanvas.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BossScript" Collapsed="true">
+    <Position X="7.75" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACCAAAAAAAAAAAAAABAAAQCEAAAAAAAAAEI=</HashCode>
+      <FileName>Assets\Scripts\Game Scripts\BossScript.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="boundsCheck" Collapsed="true">
+    <Position X="5.25" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABFAAAICAAAAAAQBAAAIAQAAAQAAAAAAAAAAAQAAEA=</HashCode>
+      <FileName>Assets\Scripts\Game Scripts\boundsCheck.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CharlieArcher">
+    <Position X="11.75" Y="6" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Properties" Collapsed="true" />
+    </Compartments>
+    <NestedTypes>
+      <Enum Name="CharlieArcher.direction" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Assets\Scripts\Game Scripts\CharlieArcher.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAQABEAIACEAAAAAAAAAAAEAAAAAAwKEAEABIIAAAEI=</HashCode>
+      <FileName>Assets\Scripts\Game Scripts\CharlieArcher.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="doorScript">
+    <Position X="10" Y="2.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACAAAAIAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Game Scripts\doorScript.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EnemyScript" Collapsed="true">
+    <Position X="6.5" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQCAAAAAKCAAAAAAAAAAIAAABAAAQCEAAAAAAAAAEI=</HashCode>
+      <FileName>Assets\Scripts\Game Scripts\EnemyScript.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Explosion">
+    <Position X="13.75" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACACAEAAAAAAAAAAAAAAAAAAQAAAgAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Game Scripts\Explosion.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="moveCamera">
+    <Position X="12.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Game Scripts\moveCamera.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BattleManager" Collapsed="true">
+    <Position X="5" Y="0.5" Width="1.5" />
+    <NestedTypes>
+      <Enum Name="BattleManager.battleState" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Assets\Scripts\Managers\BattleManager.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAQAygQEACCAGEAAAAqAAAAAEAFgAAgAIQAIBAAtgEA=</HashCode>
+      <FileName>Assets\Scripts\Managers\BattleManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameManager" Collapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAYAjQwEEGoAHEwAoQQoAACgMQggAKAIAAAgAAIkAEQ=</HashCode>
+      <FileName>Assets\Scripts\Managers\GameManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TutorialManager">
+    <Position X="10.75" Y="0.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAQAABAAACACAAQEBAAAAABAAAAoAAAAAAEAAoAAgAA=</HashCode>
+      <FileName>Assets\Scripts\Managers\TutorialManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="GameState" Collapsed="true">
+    <Position X="0.5" Y="1.25" Width="1.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAgABAAAAAAEAAAAAABAAIAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Managers\GameManager.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

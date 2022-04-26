@@ -238,8 +238,11 @@ public class BattleManager : MonoBehaviour
 
     public void BattleWon()
     {
-        gm.tutorialStage++;
+        if(gm.tutorialActive) gm.tutorialStage++;
         SceneManager.LoadScene(gm.lastScene);
+        Debug.Log("asdf");
+        Destroy(enemyRef);
+        GameObject.FindGameObjectWithTag("MainCamera").GetComponent<moveCamera>().SetCamera(moveCamera.curRoom, 0);
     } //end BattleWon()
 
     // Update is called once per frame
@@ -264,6 +267,7 @@ public class BattleManager : MonoBehaviour
             statusTextbox.text = "Right on!"; 
             Debug.Log("We won! Right on! Go back to the dungeon");
             Debug.Log("Drops should be notified on the HUD to the player");
+
             BattleWon();
 
         }
