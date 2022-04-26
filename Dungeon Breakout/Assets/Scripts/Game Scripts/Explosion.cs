@@ -45,15 +45,18 @@ public class Explosion : MonoBehaviour
                 GameObject.FindGameObjectWithTag("MainCamera").GetComponent<moveCamera>().SetCamera(ds.destination, ds.source);
             }
         }
-        if(other.tag == "Enemy")
+
+        //set reference to be used in battlemanager
+
+        if (other.tag == "Enemy")
         {
-            //set reference to be used in battlemanager
+
             gm.playerRef = summoner;
             gm.enemyRef = otherGO;
+
             //go to battle scene
             gm.GoBattle();
         }
-     
     }
     public void ExplosionEnd()
     {
